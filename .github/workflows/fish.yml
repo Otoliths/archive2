@@ -27,13 +27,18 @@ jobs:
         
       - name: water
         run: Rscript get_water.R
-      - name: push the result to GitHub
+ 
+      - name: Commit files
         run: |
-          git config --local user.email ly_ding@126.com
           git config --local user.name Otoliths
-          git add water
-          git commit -am "GH ACTION water $(date)"
-          git push https://${{github.actor}}:${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+          git config --local user.email "ly_ding@126.com"
+          git add data/*
+          git commit -am "GH ACTION Headlines $(date)"
+          git push origin main
+        env:
+          REPO_KEY: ${{secrets.TOKEN}}
+          username: github-actions
+         
          
       - name: rain
         run: Rscript get_rain.R
