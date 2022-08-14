@@ -1,3 +1,4 @@
+options(timeout=1000)
 if (!file.exists("water")){
   dir.create("water")
 }
