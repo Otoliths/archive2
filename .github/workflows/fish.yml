@@ -25,19 +25,7 @@ jobs:
         uses: actions/checkout@master
       - uses: r-lib/actions/setup-r@master
         
-      - name: water
-        run: Rscript get_water.R
- 
-      - name: Commit files
-        run: |
-          git config --local user.name Otoliths
-          git config --local user.email "ly_ding@126.com"
-          git add water/*
-          git commit -am "GH ACTION Headlines $(date)"
-          git push origin main
-        env:
-          REPO_KEY: ${{secrets.TOKEN}}
-          username: github-actions
+      
          
          
       - name: rain
