@@ -1,0 +1,46 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+#
+# See https://github.com/r-lib/actions/tree/master/examples#readme for
+# additional example workflows available for the R community.
+
+name: fish
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  ynswj:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+        
+      - name: water
+        run: Rscript get_water.R
+      - name: push the result to GitHub
+        run: |
+          git config --local user.email ly_ding@126.com
+          git config --local user.name Otoliths
+          git add water
+          git commit -am "GH ACTION water $(date)"
+          git push https://${{github.actor}}:${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+         
+      - name: rain
+        run: Rscript get_rain.R
+      - name: push the result to GitHub
+        run: |
+          git config --local user.email ly_ding@126.com
+          git config --local user.name Otoliths
+          git add rain
+          git commit -am "GH ACTION rain $(date)"
+          git push https://${{github.actor}}:${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
