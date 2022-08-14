@@ -1,3 +1,5 @@
+options(timeout=1000)
+
 if (!file.exists("rain")){
   dir.create("rain")
 }
