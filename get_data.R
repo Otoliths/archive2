@@ -1,6 +1,7 @@
 options(timeout=1000)
 
 install.packages("jsonlite")
+install.packages('curl')
 
 path1 <- paste0("water/",as.POSIXlt(Sys.time(), "Asia/Shanghai"),".rds")
 
