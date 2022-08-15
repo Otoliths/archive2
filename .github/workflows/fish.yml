@@ -9,9 +9,10 @@
 name: hydrology
 
 on:
-  schedule:
-    - cron:  '0 */2 * * *'
-
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs: 
   autoscrape:
     # The type of runner that the job will run on
