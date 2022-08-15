@@ -1,3 +1,5 @@
+options(timeout=1000)
+
 path1 <- paste0("water/",as.POSIXlt(Sys.time(), "Asia/Shanghai"),".rds")
 
 water <- jsonify::from_json("http://www.ynswj.cn/webapi/api/v1/water",fill_na = TRUE)
