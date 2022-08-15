@@ -20,7 +20,7 @@ options(timeout=1000)
 library(httr)
 
 path1 <- paste0("water/",as.POSIXlt(Sys.time(), "Asia/Shanghai"),".rds")
-water <- content(GET("http://www.ynswj.cn/webapi/api/v1/water"),as="parsed") 
+water <- content(GET("http://www.ynswj.cn/webapi/api/v1/water?extra=area&itm=1"),as="parsed") 
 saveRDS(water,path1)
 
 path2 <- paste0("rain/",as.POSIXlt(Sys.time(), "Asia/Shanghai"),".rds")
