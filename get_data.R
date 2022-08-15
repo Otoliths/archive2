@@ -1,8 +1,10 @@
 options(timeout=1000)
 
+install.packages("jsonlite")
+
 path1 <- paste0("water/",as.POSIXlt(Sys.time(), "Asia/Shanghai"),".rds")
 
-water <- jsonify::from_json("http://www.ynswj.cn/webapi/api/v1/water",fill_na = TRUE)
+water <- jsonlite::fromJSON("http://www.ynswj.cn/webapi/api/v1/water",fill_na = TRUE)
 
 saveRDS(water,path1)
 
