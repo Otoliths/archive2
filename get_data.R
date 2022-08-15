@@ -50,7 +50,3 @@ saveRDS(rain,path2)
 # rain <- resp2 %>% resp_body_json()
 # path2 <- paste0("rain/",as.POSIXlt(Sys.time(), "Asia/Shanghai"),".rds")
 # saveRDS(rain,path2)
-
-
-
-
