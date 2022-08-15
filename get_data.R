@@ -28,7 +28,9 @@ options(timeout=1000)
 # rain <- content(GET("http://www.ynswj.cn/webapi/api/v1/rain"),as="parsed") 
 # saveRDS(rain,path2)
 
+dir.create("water")
 
+dir.create("rain")
 
 library(httr2)
 
