@@ -17,23 +17,34 @@ on:
 permissions:
   contents: read
 
-jobs:
-  ynswj:
+jobs: 
+  autoscrape:
+    # The type of runner that the job will run on
     runs-on: macos-latest
+
+    # Load repo and install R
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - uses: r-lib/actions/setup-r@master
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("jsonify")'
         
+    # Run R script
+    - name: Scrape
+      run: Rscript get_data.R
       
-         
-         
-      - name: rain
-        run: Rscript get_rain.R
-      - name: push the result to GitHub
-        run: |
-          git config --local user.email ly_ding@126.com
-          git config --local user.name Otoliths
-          git add rain
-          git commit -am "GH ACTION rain $(date)"
-          git push https://${{github.actor}}:${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+ # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name Otoliths
+        git config --local user.email "ly_ding@126.com"
+        git add water/*
+        git add rain/*
+        git commit -am "GH ACTION Headlines $(date)"
+        git push origin main
+      env:
+        REPO_KEY: ${{secrets.TOKEN}}
+        username: github-actions
