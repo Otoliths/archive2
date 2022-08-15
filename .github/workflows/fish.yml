@@ -24,9 +24,9 @@ jobs:
     - uses: r-lib/actions/setup-r@master
 
     # Set-up R
-    - name: Install packages
-      run: |
-        R -e 'install.packages("httr2")'
+    #- name: Install packages
+    #  run: |
+    #    R -e 'install.packages("httr2")'
         
     # Run R script
     - name: Scrape
