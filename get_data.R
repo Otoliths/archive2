@@ -16,7 +16,6 @@ options(timeout=1000)
 # 
 # saveRDS(rain,path2)
 
-install.packages('httr')
 
 library(httr)
 
